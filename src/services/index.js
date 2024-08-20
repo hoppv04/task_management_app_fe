@@ -29,3 +29,13 @@ export const callUserAuthApi = async () => {
 
   return response?.data;
 };
+
+export const callLogoutApi = async () => {
+  const response = await axios.post(
+    "http://localhost:5000/api/user/logout",
+    {},
+    { withCredentials: true }
+  );
+
+  return response?.data;
+};
