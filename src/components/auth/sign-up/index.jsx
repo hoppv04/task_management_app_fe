@@ -20,7 +20,6 @@ function SignUp() {
   const handleSubmit = async (getData) => {
     try {
       const data = await callRegisterUserApi(getData);
-      console.log(data);
 
       if (data?.success) {
         toast({

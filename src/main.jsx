@@ -3,10 +3,13 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { Toaster } from "./components/ui/toaster.jsx";
 import "./index.css";
+import TaskManagerProvider from "./context/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <App />
-    <Toaster />
+    <TaskManagerProvider>
+      <App />
+      <Toaster />
+    </TaskManagerProvider>
   </BrowserRouter>
 );
