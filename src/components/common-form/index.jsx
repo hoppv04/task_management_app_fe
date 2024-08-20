@@ -1,7 +1,12 @@
 import { SelectItem } from "@radix-ui/react-select";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { Input } from "../ui/input";
-import { Select, SelectContent, SelectTrigger } from "../ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 import CommonButton from "../common-button";
 
 function CommonForm({ formControls = [], handleSubmit, form, buttonText }) {
@@ -23,16 +28,27 @@ function CommonForm({ formControls = [], handleSubmit, form, buttonText }) {
                           <Input
                             placeholder={controlItem.placeholder}
                             type={controlItem.type}
+                            value={field.value}
                             {...field}
                             autoComplete={controlItem.autoComplete || "off"}
                             className="w-full rounded h-[50px] border-none text-black bg-gray-200 text-[16px] outline-none drop-shadow-sm transition-all duration-300 ease-in-out focus:bg-gray-100 focus:drop-shadow-lg focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                           />
                         </FormControl>
                       ) : controlItem.componentType === "select" ? (
-                        <Select>
+                        <Select
+                          value={field.value}
+                          onValueChange={field.onChange}
+                        >
                           <FormControl>
                             <SelectTrigger className="w-full rounded h-[50px] border-none text-black bg-gray-200 text-[16px] outline-none drop-shadow-sm transition-all duration-300 ease-in-out focus:bg-gray-100 focus:drop-shadow-lg focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-offset-0">
-                              Select
+                              {field.value ? (
+                                <SelectValue
+                                  className="text-black"
+                                  placeholder={controlItem.placeholder}
+                                />
+                              ) : (
+                                "Select"
+                              )}
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent className="bg-white">
