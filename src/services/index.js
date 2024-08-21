@@ -39,3 +39,20 @@ export const callLogoutApi = async () => {
 
   return response?.data;
 };
+
+export const addNewTaskApi = async (formData) => {
+  const response = await axios.post(
+    "http://localhost:5000/api/task/add-new-task",
+    formData
+  );
+
+  return response?.data;
+};
+
+export const getAllTaskApi = async (getCurrentUserId) => {
+  const response = await axios.get(
+    `http://localhost:5000/api/task/get-all-tasks-by-user-id/${getCurrentUserId}`
+  );
+
+  return response?.data;
+};

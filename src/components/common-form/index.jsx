@@ -1,9 +1,9 @@
-import { SelectItem } from "@radix-ui/react-select";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "../ui/form";
 import { Input } from "../ui/input";
 import {
   Select,
   SelectContent,
+  SelectItem,
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
@@ -55,6 +55,7 @@ function CommonForm({ formControls = [], handleSubmit, form, buttonText }) {
                             {controlItem.options.map((optionItem, index) => (
                               <SelectItem
                                 key={index}
+                                value={optionItem.id}
                                 className="text-black cursor-pointer focus:text-black"
                               >
                                 {optionItem.label}

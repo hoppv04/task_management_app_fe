@@ -1,11 +1,23 @@
 import { callUserAuthApi } from "@/services";
 import { createContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 
 export const TaskManagerContext = createContext(null);
 
 function TaskManagerProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [tasks, setTasks] = useState([]);
+
+  const taskFormData = useForm({
+    defaultValues: {
+      title: "",
+      description: "",
+      status: "",
+      priority: "",
+    },
+  });
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,7 +46,17 @@ function TaskManagerProvider({ children }) {
   }, [navigate, location.pathname]);
 
   return (
-    <TaskManagerContext.Provider value={{ user, setUser }}>
+    <TaskManagerContext.Provider
+      value={{
+        user,
+        setUser,
+        taskFormData,
+        tasks,
+        setTasks,
+        loading,
+        setLoading,
+      }}
+    >
       {children}
     </TaskManagerContext.Provider>
   );
