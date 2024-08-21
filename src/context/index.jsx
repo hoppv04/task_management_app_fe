@@ -9,6 +9,7 @@ function TaskManagerProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [currentTaskEditedId, setCurrentTaskEditedId] = useState(null);
 
   const taskFormData = useForm({
     defaultValues: {
@@ -55,6 +56,8 @@ function TaskManagerProvider({ children }) {
         setTasks,
         loading,
         setLoading,
+        currentTaskEditedId,
+        setCurrentTaskEditedId,
       }}
     >
       {children}

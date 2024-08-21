@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import CommonForm from "../common-form";
 import {
   Dialog,
@@ -6,26 +5,18 @@ import {
   DialogDescription,
   DialogTitle,
 } from "../ui/dialog";
-import { TaskManagerContext } from "@/context";
 
 function CommonDialog({
   showDialog,
-  setShowDialog,
+  handleOpenChange,
   title,
   formControls,
   formData,
   handleSubmit,
   btnText,
 }) {
-  const { taskFormData } = useContext(TaskManagerContext);
   return (
-    <Dialog
-      open={showDialog}
-      onOpenChange={() => {
-        setShowDialog(false);
-        taskFormData.reset();
-      }}
-    >
+    <Dialog open={showDialog} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-screen h-[450px] overflow-auto">
         <DialogTitle>{title}</DialogTitle>
         <div>
