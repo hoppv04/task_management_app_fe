@@ -22,7 +22,9 @@ function CommonForm({ formControls = [], handleSubmit, form, buttonText }) {
                 render={({ field }) => {
                   return (
                     <FormItem>
-                      <FormLabel>{controlItem.label}</FormLabel>
+                      <div className="text-left mt-4">
+                        <FormLabel>{controlItem.label}</FormLabel>
+                      </div>
                       {controlItem.componentType === "input" ? (
                         <FormControl>
                           <Input
